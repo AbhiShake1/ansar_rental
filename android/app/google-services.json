@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "641632887618",
+    "project_id": "ansarrental-5d261",
+    "storage_bucket": "ansarrental-5d261.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641632887618:android:d2779b0bc0330911b75edb",
+        "android_client_info": {
+          "package_name": "com.abhi.ansarirental.ansar_rental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641632887618-i43u1qr9571s5m1vko4kj69mu6skc9n0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACY_Rc5GKnflJI65QNwcQC0uSZsdTlYJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641632887618-i43u1qr9571s5m1vko4kj69mu6skc9n0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
