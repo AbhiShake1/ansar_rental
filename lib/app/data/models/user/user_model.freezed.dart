@@ -21,22 +21,37 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   String get name => throw _privateConstructorUsedError;
+
   String get email => throw _privateConstructorUsedError;
+
   String get password => throw _privateConstructorUsedError;
+
   String get address => throw _privateConstructorUsedError;
+
   int get contactNumber => throw _privateConstructorUsedError;
+
   num get monthlyRent => throw _privateConstructorUsedError;
+
   num get waterRent => throw _privateConstructorUsedError;
+
   int get roomNo => throw _privateConstructorUsedError;
+
   int get guardianContactNumber => throw _privateConstructorUsedError;
+
   DateTime get startingDate => throw _privateConstructorUsedError;
+
   num? get duePayment => throw _privateConstructorUsedError;
+
   num? get totalPayment => throw _privateConstructorUsedError;
+
   String get photoUrl => throw _privateConstructorUsedError;
+
   String get documentUrl => throw _privateConstructorUsedError;
+
   bool get isAdmin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -46,6 +61,7 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
+
   $Res call(
       {String name,
       String email,
@@ -69,6 +85,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
   _$UserModelCopyWithImpl(this._value, this._then);
 
   final UserModel _value;
+
   // ignore: unused_field
   final $Res Function(UserModel) _then;
 
@@ -160,6 +177,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   factory _$$_UserModelCopyWith(
           _$_UserModel value, $Res Function(_$_UserModel) then) =
       __$$_UserModelCopyWithImpl<$Res>;
+
   @override
   $Res call(
       {String name,
@@ -417,34 +435,49 @@ abstract class _UserModel implements UserModel {
 
   @override
   String get name;
+
   @override
   String get email;
+
   @override
   String get password;
+
   @override
   String get address;
+
   @override
   int get contactNumber;
+
   @override
   num get monthlyRent;
+
   @override
   num get waterRent;
+
   @override
   int get roomNo;
+
   @override
   int get guardianContactNumber;
+
   @override
   DateTime get startingDate;
+
   @override
   num? get duePayment;
+
   @override
   num? get totalPayment;
+
   @override
   String get photoUrl;
+
   @override
   String get documentUrl;
+
   @override
   bool get isAdmin;
+
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

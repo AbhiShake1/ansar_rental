@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '641632887618',
     projectId: 'ansarrental-5d261',
     storageBucket: 'ansarrental-5d261.appspot.com',
-    iosClientId: '641632887618-hhn0tn43d7kon1p9pv5qfa17f6vk63mv.apps.googleusercontent.com',
+    iosClientId:
+        '641632887618-hhn0tn43d7kon1p9pv5qfa17f6vk63mv.apps.googleusercontent.com',
     iosBundleId: 'com.abhi.ansarirental.ansarRental',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '641632887618',
     projectId: 'ansarrental-5d261',
     storageBucket: 'ansarrental-5d261.appspot.com',
-    iosClientId: '641632887618-hhn0tn43d7kon1p9pv5qfa17f6vk63mv.apps.googleusercontent.com',
+    iosClientId:
+        '641632887618-hhn0tn43d7kon1p9pv5qfa17f6vk63mv.apps.googleusercontent.com',
     iosBundleId: 'com.abhi.ansarirental.ansarRental',
   );
 }

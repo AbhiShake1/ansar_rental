@@ -17,6 +17,7 @@ dependencies:
   flutter_screenutil: 5.5.3+2
   google_fonts: 3.0.1
   get_storage: 2.0.3
+  iconsax: 0.0.8
   flutter: 
     sdk: flutter
 
