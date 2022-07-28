@@ -8,6 +8,9 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.5
+  firebase_core: 1.20.0
+  firebase_auth: 3.6.0
+  cloud_firestore: 3.4.1
   flutter: 
     sdk: flutter
 
@@ -15,6 +18,7 @@ dev_dependencies:
   flutter_lints: 2.0.1
   flutter_test: 
     sdk: flutter
+  very_good_analysis: ^3.0.1
 
 flutter: 
   uses-material-design: true
