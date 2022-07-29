@@ -1,5 +1,6 @@
 import 'package:ansar_rental/app/config/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
@@ -13,6 +14,10 @@ class AppTheme {
             borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide.none,
           ),
+          contentPadding: const EdgeInsets.all(10),
+        ),
+        colorScheme: Get.theme.colorScheme.copyWith(
+          primary: AppColors.primaryAccent,
         ),
         useMaterial3: true,
       );
