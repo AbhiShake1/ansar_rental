@@ -7,6 +7,7 @@ part of 'user_model.dart';
 // **************************************************************************
 
 _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
+      id: json['id'] as String,
       name: json['name'] as String,
       email: json['email'] as String,
       password: json['password'] as String,
@@ -15,6 +16,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       monthlyRent: json['monthlyRent'] as num,
       waterRent: json['waterRent'] as num,
       roomNo: json['roomNo'] as int,
+      guardianName: json['guardianName'] as String,
       guardianContactNumber: json['guardianContactNumber'] as int,
       startingDate: DateTime.parse(json['startingDate'] as String),
       duePayment: json['duePayment'] as num?,
@@ -26,6 +28,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'email': instance.email,
       'password': instance.password,
@@ -34,6 +37,7 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'monthlyRent': instance.monthlyRent,
       'waterRent': instance.waterRent,
       'roomNo': instance.roomNo,
+      'guardianName': instance.guardianName,
       'guardianContactNumber': instance.guardianContactNumber,
       'startingDate': instance.startingDate.toIso8601String(),
       'duePayment': instance.duePayment,

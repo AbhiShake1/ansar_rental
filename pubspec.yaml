@@ -18,6 +18,9 @@ dependencies:
   google_fonts: 3.0.1
   get_storage: 2.0.3
   iconsax: 0.0.8
+  dartz: 0.10.1
+  lottie: 1.4.0
+  flutter_slimy_card: 1.0.2
   flutter: 
     sdk: flutter
 
@@ -31,5 +34,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
+  assets: 
+    - assets/lottie/
   uses-material-design: true
 

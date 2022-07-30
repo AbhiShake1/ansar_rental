@@ -9,7 +9,7 @@ class AppTheme {
         textTheme: GoogleFonts.quicksandTextTheme(),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: AppColors.white,
+          fillColor: const Color.fromRGBO(175, 175, 175, 1),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide.none,
@@ -19,6 +19,10 @@ class AppTheme {
         colorScheme: Get.theme.colorScheme.copyWith(
           primary: AppColors.primaryAccent,
         ),
+        splashFactory: NoSplash.splashFactory,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
         useMaterial3: true,
       );
 

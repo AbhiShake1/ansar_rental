@@ -2,9 +2,10 @@ import 'package:ansar_rental/app/modules/login/controllers/login_controller.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class LoginView extends GetView<LoginController> {
+class LoginView extends GetWidget<LoginController> {
   const LoginView({super.key});
 
   @override
@@ -38,11 +39,10 @@ class LoginView extends GetView<LoginController> {
                   hintText: 'Enter password',
                   suffixIcon: Icon(
                     controller.isPasswordObscured.value
-                        ? Icons.visibility
-                        : Icons.visibility_off,
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
                   ).onTap(
-                    () => controller.isPasswordObscured.value =
-                        !controller.isPasswordObscured.value,
+                    () => controller.isPasswordObscured.toggle(),
                   ),
                 ),
                 obscureText: controller.isPasswordObscured.value,
@@ -54,7 +54,7 @@ class LoginView extends GetView<LoginController> {
             ),
           ],
         ).px(16),
-      ),
+      ).px(30),
     );
   }
 }

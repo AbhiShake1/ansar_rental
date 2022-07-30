@@ -1,5 +1,6 @@
 import 'package:ansar_rental/app/modules/login/repo/auth_repo.dart';
 import 'package:ansar_rental/app/routes/app_pages.dart';
+import 'package:ansar_rental/app/utils/service_utils.dart';
 import 'package:ansar_rental/app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,23 +14,6 @@ class LoginController extends GetxController {
 
   final _authRepo = Get.find<AuthRepo>();
 
-  Future<void> callService(
-    Future<void> Function() asyncFunction, {
-    VoidCallback? onSuccess,
-    VoidCallback? onFailure,
-  }) =>
-      Get.showOverlay(
-        asyncFunction: () async {
-          try {
-            await asyncFunction();
-            onSuccess?.call();
-          } catch (e) {
-            onFailure?.call();
-          }
-        },
-        loadingWidget: const LoadingWidget(),
-      );
-
   Future<void> signIn() async {
     if (!formKey.currentState!.validate()) return;
 
@@ -39,9 +23,10 @@ class LoginController extends GetxController {
         passwordController.text,
       ),
       onSuccess: () => Get.offAndToNamed<dynamic>(Routes.HOME),
-      onFailure: () => Get.snackbar(
+      onFailure: (e) => Get.snackbar(
         'Invalid credentials',
         'Please contact house owner',
+        snackPosition: SnackPosition.BOTTOM,
       ),
     );
   }

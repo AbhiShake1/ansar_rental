@@ -5,9 +5,8 @@ import 'package:get/get.dart';
 
 class RedirectMiddleware extends GetMiddleware {
   @override
-  RouteSettings? redirect(String? route) => RouteSettings(
-        name: FirebaseAuth.instance.currentUser == null
-            ? Routes.LOGIN
-            : Routes.HOME,
-      );
+  RouteSettings? redirect(String? route) =>
+      FirebaseAuth.instance.currentUser == null
+          ? null
+          : const RouteSettings(name: Routes.HOME);
 }

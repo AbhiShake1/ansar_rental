@@ -20,38 +20,25 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-
   String get email => throw _privateConstructorUsedError;
-
   String get password => throw _privateConstructorUsedError;
-
   String get address => throw _privateConstructorUsedError;
-
   int get contactNumber => throw _privateConstructorUsedError;
-
   num get monthlyRent => throw _privateConstructorUsedError;
-
   num get waterRent => throw _privateConstructorUsedError;
-
   int get roomNo => throw _privateConstructorUsedError;
-
+  String get guardianName => throw _privateConstructorUsedError;
   int get guardianContactNumber => throw _privateConstructorUsedError;
-
   DateTime get startingDate => throw _privateConstructorUsedError;
-
   num? get duePayment => throw _privateConstructorUsedError;
-
   num? get totalPayment => throw _privateConstructorUsedError;
-
   String get photoUrl => throw _privateConstructorUsedError;
-
   String get documentUrl => throw _privateConstructorUsedError;
-
   bool get isAdmin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -61,9 +48,9 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String email,
       String password,
       String address,
@@ -71,6 +58,7 @@ abstract class $UserModelCopyWith<$Res> {
       num monthlyRent,
       num waterRent,
       int roomNo,
+      String guardianName,
       int guardianContactNumber,
       DateTime startingDate,
       num? duePayment,
@@ -85,12 +73,12 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
   _$UserModelCopyWithImpl(this._value, this._then);
 
   final UserModel _value;
-
   // ignore: unused_field
   final $Res Function(UserModel) _then;
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? email = freezed,
     Object? password = freezed,
@@ -99,6 +87,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? monthlyRent = freezed,
     Object? waterRent = freezed,
     Object? roomNo = freezed,
+    Object? guardianName = freezed,
     Object? guardianContactNumber = freezed,
     Object? startingDate = freezed,
     Object? duePayment = freezed,
@@ -108,6 +97,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? isAdmin = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -140,6 +133,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.roomNo
           : roomNo // ignore: cast_nullable_to_non_nullable
               as int,
+      guardianName: guardianName == freezed
+          ? _value.guardianName
+          : guardianName // ignore: cast_nullable_to_non_nullable
+              as String,
       guardianContactNumber: guardianContactNumber == freezed
           ? _value.guardianContactNumber
           : guardianContactNumber // ignore: cast_nullable_to_non_nullable
@@ -177,10 +174,10 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   factory _$$_UserModelCopyWith(
           _$_UserModel value, $Res Function(_$_UserModel) then) =
       __$$_UserModelCopyWithImpl<$Res>;
-
   @override
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String email,
       String password,
       String address,
@@ -188,6 +185,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       num monthlyRent,
       num waterRent,
       int roomNo,
+      String guardianName,
       int guardianContactNumber,
       DateTime startingDate,
       num? duePayment,
@@ -209,6 +207,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? email = freezed,
     Object? password = freezed,
@@ -217,6 +216,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? monthlyRent = freezed,
     Object? waterRent = freezed,
     Object? roomNo = freezed,
+    Object? guardianName = freezed,
     Object? guardianContactNumber = freezed,
     Object? startingDate = freezed,
     Object? duePayment = freezed,
@@ -226,6 +226,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? isAdmin = freezed,
   }) {
     return _then(_$_UserModel(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -258,6 +262,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.roomNo
           : roomNo // ignore: cast_nullable_to_non_nullable
               as int,
+      guardianName: guardianName == freezed
+          ? _value.guardianName
+          : guardianName // ignore: cast_nullable_to_non_nullable
+              as String,
       guardianContactNumber: guardianContactNumber == freezed
           ? _value.guardianContactNumber
           : guardianContactNumber // ignore: cast_nullable_to_non_nullable
@@ -294,7 +302,8 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
   const _$_UserModel(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.email,
       required this.password,
       required this.address,
@@ -302,6 +311,7 @@ class _$_UserModel implements _UserModel {
       required this.monthlyRent,
       required this.waterRent,
       required this.roomNo,
+      required this.guardianName,
       required this.guardianContactNumber,
       required this.startingDate,
       this.duePayment,
@@ -313,6 +323,8 @@ class _$_UserModel implements _UserModel {
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -329,6 +341,8 @@ class _$_UserModel implements _UserModel {
   final num waterRent;
   @override
   final int roomNo;
+  @override
+  final String guardianName;
   @override
   final int guardianContactNumber;
   @override
@@ -347,7 +361,7 @@ class _$_UserModel implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(name: $name, email: $email, password: $password, address: $address, contactNumber: $contactNumber, monthlyRent: $monthlyRent, waterRent: $waterRent, roomNo: $roomNo, guardianContactNumber: $guardianContactNumber, startingDate: $startingDate, duePayment: $duePayment, totalPayment: $totalPayment, photoUrl: $photoUrl, documentUrl: $documentUrl, isAdmin: $isAdmin)';
+    return 'UserModel(id: $id, name: $name, email: $email, password: $password, address: $address, contactNumber: $contactNumber, monthlyRent: $monthlyRent, waterRent: $waterRent, roomNo: $roomNo, guardianName: $guardianName, guardianContactNumber: $guardianContactNumber, startingDate: $startingDate, duePayment: $duePayment, totalPayment: $totalPayment, photoUrl: $photoUrl, documentUrl: $documentUrl, isAdmin: $isAdmin)';
   }
 
   @override
@@ -355,6 +369,7 @@ class _$_UserModel implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserModel &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.password, password) &&
@@ -365,6 +380,8 @@ class _$_UserModel implements _UserModel {
                 .equals(other.monthlyRent, monthlyRent) &&
             const DeepCollectionEquality().equals(other.waterRent, waterRent) &&
             const DeepCollectionEquality().equals(other.roomNo, roomNo) &&
+            const DeepCollectionEquality()
+                .equals(other.guardianName, guardianName) &&
             const DeepCollectionEquality()
                 .equals(other.guardianContactNumber, guardianContactNumber) &&
             const DeepCollectionEquality()
@@ -383,6 +400,7 @@ class _$_UserModel implements _UserModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(password),
@@ -391,6 +409,7 @@ class _$_UserModel implements _UserModel {
       const DeepCollectionEquality().hash(monthlyRent),
       const DeepCollectionEquality().hash(waterRent),
       const DeepCollectionEquality().hash(roomNo),
+      const DeepCollectionEquality().hash(guardianName),
       const DeepCollectionEquality().hash(guardianContactNumber),
       const DeepCollectionEquality().hash(startingDate),
       const DeepCollectionEquality().hash(duePayment),
@@ -414,7 +433,8 @@ class _$_UserModel implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String name,
+      {required final String id,
+      required final String name,
       required final String email,
       required final String password,
       required final String address,
@@ -422,6 +442,7 @@ abstract class _UserModel implements UserModel {
       required final num monthlyRent,
       required final num waterRent,
       required final int roomNo,
+      required final String guardianName,
       required final int guardianContactNumber,
       required final DateTime startingDate,
       final num? duePayment,
@@ -434,50 +455,39 @@ abstract class _UserModel implements UserModel {
       _$_UserModel.fromJson;
 
   @override
+  String get id;
+  @override
   String get name;
-
   @override
   String get email;
-
   @override
   String get password;
-
   @override
   String get address;
-
   @override
   int get contactNumber;
-
   @override
   num get monthlyRent;
-
   @override
   num get waterRent;
-
   @override
   int get roomNo;
-
+  @override
+  String get guardianName;
   @override
   int get guardianContactNumber;
-
   @override
   DateTime get startingDate;
-
   @override
   num? get duePayment;
-
   @override
   num? get totalPayment;
-
   @override
   String get photoUrl;
-
   @override
   String get documentUrl;
-
   @override
   bool get isAdmin;
-
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

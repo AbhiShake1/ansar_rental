@@ -17,6 +17,13 @@ void main() async {
 
   await GetStorage.init(AppConst.cacheUser);
 
+  //ignore errors
+  // FlutterError.onError = (_) {};
+
+  // FlutterError.onError = (details) {
+  //   log(details.exceptionAsString(), stackTrace: details.stack);
+  // };
+
   runApp(
     ScreenUtilInit(
       minTextAdapt: true,
