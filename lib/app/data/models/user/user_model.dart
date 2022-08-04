@@ -20,9 +20,13 @@ class UserModel with _$UserModel {
     required DateTime startingDate,
     num? duePayment,
     num? totalPayment,
+    String? notes,
     required String photoUrl,
     required String documentUrl,
     @Default(false) bool isAdmin,
+    @Default(false) bool hasLeft,
+    @Default(0) int startingElectricityUnits,
+    @Default(1) int noOfTenants,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

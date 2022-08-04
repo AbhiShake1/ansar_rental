@@ -1,7 +1,6 @@
 import 'package:ansar_rental/app/modules/login/repo/auth_repo.dart';
 import 'package:ansar_rental/app/routes/app_pages.dart';
 import 'package:ansar_rental/app/utils/service_utils.dart';
-import 'package:ansar_rental/app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

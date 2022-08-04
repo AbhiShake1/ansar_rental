@@ -34,9 +34,13 @@ mixin _$UserModel {
   DateTime get startingDate => throw _privateConstructorUsedError;
   num? get duePayment => throw _privateConstructorUsedError;
   num? get totalPayment => throw _privateConstructorUsedError;
+  String? get notes => throw _privateConstructorUsedError;
   String get photoUrl => throw _privateConstructorUsedError;
   String get documentUrl => throw _privateConstructorUsedError;
   bool get isAdmin => throw _privateConstructorUsedError;
+  bool get hasLeft => throw _privateConstructorUsedError;
+  int get startingElectricityUnits => throw _privateConstructorUsedError;
+  int get noOfTenants => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,9 +67,13 @@ abstract class $UserModelCopyWith<$Res> {
       DateTime startingDate,
       num? duePayment,
       num? totalPayment,
+      String? notes,
       String photoUrl,
       String documentUrl,
-      bool isAdmin});
+      bool isAdmin,
+      bool hasLeft,
+      int startingElectricityUnits,
+      int noOfTenants});
 }
 
 /// @nodoc
@@ -92,9 +100,13 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? startingDate = freezed,
     Object? duePayment = freezed,
     Object? totalPayment = freezed,
+    Object? notes = freezed,
     Object? photoUrl = freezed,
     Object? documentUrl = freezed,
     Object? isAdmin = freezed,
+    Object? hasLeft = freezed,
+    Object? startingElectricityUnits = freezed,
+    Object? noOfTenants = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -153,6 +165,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.totalPayment
           : totalPayment // ignore: cast_nullable_to_non_nullable
               as num?,
+      notes: notes == freezed
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as String?,
       photoUrl: photoUrl == freezed
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -165,6 +181,18 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.isAdmin
           : isAdmin // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasLeft: hasLeft == freezed
+          ? _value.hasLeft
+          : hasLeft // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startingElectricityUnits: startingElectricityUnits == freezed
+          ? _value.startingElectricityUnits
+          : startingElectricityUnits // ignore: cast_nullable_to_non_nullable
+              as int,
+      noOfTenants: noOfTenants == freezed
+          ? _value.noOfTenants
+          : noOfTenants // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -190,9 +218,13 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       DateTime startingDate,
       num? duePayment,
       num? totalPayment,
+      String? notes,
       String photoUrl,
       String documentUrl,
-      bool isAdmin});
+      bool isAdmin,
+      bool hasLeft,
+      int startingElectricityUnits,
+      int noOfTenants});
 }
 
 /// @nodoc
@@ -221,9 +253,13 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? startingDate = freezed,
     Object? duePayment = freezed,
     Object? totalPayment = freezed,
+    Object? notes = freezed,
     Object? photoUrl = freezed,
     Object? documentUrl = freezed,
     Object? isAdmin = freezed,
+    Object? hasLeft = freezed,
+    Object? startingElectricityUnits = freezed,
+    Object? noOfTenants = freezed,
   }) {
     return _then(_$_UserModel(
       id: id == freezed
@@ -282,6 +318,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.totalPayment
           : totalPayment // ignore: cast_nullable_to_non_nullable
               as num?,
+      notes: notes == freezed
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as String?,
       photoUrl: photoUrl == freezed
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -294,6 +334,18 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.isAdmin
           : isAdmin // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasLeft: hasLeft == freezed
+          ? _value.hasLeft
+          : hasLeft // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startingElectricityUnits: startingElectricityUnits == freezed
+          ? _value.startingElectricityUnits
+          : startingElectricityUnits // ignore: cast_nullable_to_non_nullable
+              as int,
+      noOfTenants: noOfTenants == freezed
+          ? _value.noOfTenants
+          : noOfTenants // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -316,9 +368,13 @@ class _$_UserModel implements _UserModel {
       required this.startingDate,
       this.duePayment,
       this.totalPayment,
+      this.notes,
       required this.photoUrl,
       required this.documentUrl,
-      this.isAdmin = false});
+      this.isAdmin = false,
+      this.hasLeft = false,
+      this.startingElectricityUnits = 0,
+      this.noOfTenants = 1});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -352,16 +408,27 @@ class _$_UserModel implements _UserModel {
   @override
   final num? totalPayment;
   @override
+  final String? notes;
+  @override
   final String photoUrl;
   @override
   final String documentUrl;
   @override
   @JsonKey()
   final bool isAdmin;
+  @override
+  @JsonKey()
+  final bool hasLeft;
+  @override
+  @JsonKey()
+  final int startingElectricityUnits;
+  @override
+  @JsonKey()
+  final int noOfTenants;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, name: $name, email: $email, password: $password, address: $address, contactNumber: $contactNumber, monthlyRent: $monthlyRent, waterRent: $waterRent, roomNo: $roomNo, guardianName: $guardianName, guardianContactNumber: $guardianContactNumber, startingDate: $startingDate, duePayment: $duePayment, totalPayment: $totalPayment, photoUrl: $photoUrl, documentUrl: $documentUrl, isAdmin: $isAdmin)';
+    return 'UserModel(id: $id, name: $name, email: $email, password: $password, address: $address, contactNumber: $contactNumber, monthlyRent: $monthlyRent, waterRent: $waterRent, roomNo: $roomNo, guardianName: $guardianName, guardianContactNumber: $guardianContactNumber, startingDate: $startingDate, duePayment: $duePayment, totalPayment: $totalPayment, notes: $notes, photoUrl: $photoUrl, documentUrl: $documentUrl, isAdmin: $isAdmin, hasLeft: $hasLeft, startingElectricityUnits: $startingElectricityUnits, noOfTenants: $noOfTenants)';
   }
 
   @override
@@ -390,33 +457,44 @@ class _$_UserModel implements _UserModel {
                 .equals(other.duePayment, duePayment) &&
             const DeepCollectionEquality()
                 .equals(other.totalPayment, totalPayment) &&
+            const DeepCollectionEquality().equals(other.notes, notes) &&
             const DeepCollectionEquality().equals(other.photoUrl, photoUrl) &&
             const DeepCollectionEquality()
                 .equals(other.documentUrl, documentUrl) &&
-            const DeepCollectionEquality().equals(other.isAdmin, isAdmin));
+            const DeepCollectionEquality().equals(other.isAdmin, isAdmin) &&
+            const DeepCollectionEquality().equals(other.hasLeft, hasLeft) &&
+            const DeepCollectionEquality().equals(
+                other.startingElectricityUnits, startingElectricityUnits) &&
+            const DeepCollectionEquality()
+                .equals(other.noOfTenants, noOfTenants));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(contactNumber),
-      const DeepCollectionEquality().hash(monthlyRent),
-      const DeepCollectionEquality().hash(waterRent),
-      const DeepCollectionEquality().hash(roomNo),
-      const DeepCollectionEquality().hash(guardianName),
-      const DeepCollectionEquality().hash(guardianContactNumber),
-      const DeepCollectionEquality().hash(startingDate),
-      const DeepCollectionEquality().hash(duePayment),
-      const DeepCollectionEquality().hash(totalPayment),
-      const DeepCollectionEquality().hash(photoUrl),
-      const DeepCollectionEquality().hash(documentUrl),
-      const DeepCollectionEquality().hash(isAdmin));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(email),
+        const DeepCollectionEquality().hash(password),
+        const DeepCollectionEquality().hash(address),
+        const DeepCollectionEquality().hash(contactNumber),
+        const DeepCollectionEquality().hash(monthlyRent),
+        const DeepCollectionEquality().hash(waterRent),
+        const DeepCollectionEquality().hash(roomNo),
+        const DeepCollectionEquality().hash(guardianName),
+        const DeepCollectionEquality().hash(guardianContactNumber),
+        const DeepCollectionEquality().hash(startingDate),
+        const DeepCollectionEquality().hash(duePayment),
+        const DeepCollectionEquality().hash(totalPayment),
+        const DeepCollectionEquality().hash(notes),
+        const DeepCollectionEquality().hash(photoUrl),
+        const DeepCollectionEquality().hash(documentUrl),
+        const DeepCollectionEquality().hash(isAdmin),
+        const DeepCollectionEquality().hash(hasLeft),
+        const DeepCollectionEquality().hash(startingElectricityUnits),
+        const DeepCollectionEquality().hash(noOfTenants)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -447,9 +525,13 @@ abstract class _UserModel implements UserModel {
       required final DateTime startingDate,
       final num? duePayment,
       final num? totalPayment,
+      final String? notes,
       required final String photoUrl,
       required final String documentUrl,
-      final bool isAdmin}) = _$_UserModel;
+      final bool isAdmin,
+      final bool hasLeft,
+      final int startingElectricityUnits,
+      final int noOfTenants}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -483,11 +565,19 @@ abstract class _UserModel implements UserModel {
   @override
   num? get totalPayment;
   @override
+  String? get notes;
+  @override
   String get photoUrl;
   @override
   String get documentUrl;
   @override
   bool get isAdmin;
+  @override
+  bool get hasLeft;
+  @override
+  int get startingElectricityUnits;
+  @override
+  int get noOfTenants;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

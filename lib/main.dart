@@ -1,3 +1,4 @@
+import 'package:ansar_rental/app/bindings/initial_binding.dart';
 import 'package:ansar_rental/app/config/constants.dart';
 import 'package:ansar_rental/app/config/theme.dart';
 import 'package:ansar_rental/app/routes/app_pages.dart';
@@ -15,6 +16,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+    name: 'ADMIN',
+  );
+
   await GetStorage.init(AppConst.cacheUser);
 
   //ignore errors
@@ -30,6 +36,7 @@ void main() async {
       splitScreenMode: true,
       designSize: const Size(375, 812),
       builder: (context, child) => GetMaterialApp(
+        initialBinding: InitialBinding(),
         title: 'Ansar Rental',
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,

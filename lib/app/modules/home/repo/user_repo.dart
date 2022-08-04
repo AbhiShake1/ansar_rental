@@ -7,56 +7,60 @@ import 'package:get/get.dart';
 class UserRepo extends GetxService {
   final _dbClient = Get.find<AuthClient>();
 
-  User get currentUser => FirebaseAuth.instance.currentUser!;
-
-  String get currentUID => currentUser.uid;
-
   Future<Either<UserModel, String>> registerUser({
-    //required String id,
+    required bool toUpdate,
     required String name,
     required String password,
     required String email,
-    required String address,
-    required int contactNumber,
-    required String guardianName,
-    required int roomNo,
-    required num monthlyRent,
-    required DateTime startingDate,
-    required int guardianContactNumber,
-    required num startingElectricityUnits,
-    required int noOfTenants,
-    required num waterRent,
+    String? address,
+    int? contactNumber,
+    String? guardianName,
+    int? roomNo,
+    num? monthlyRent,
+    DateTime? startingDate,
+    int? guardianContactNumber,
+    int? startingElectricityUnits,
+    int? noOfTenants,
+    num? waterRent,
     required bool isAdmin,
-    required String documentUrl,
+    String? documentUrl,
     required String photoUrl,
+    String? notes,
+    String? id,
   }) async {
     UserCredential? credential;
 
-    try {
-      credential = await _dbClient.signUpWithEmailAndPassword(email, password);
-    } on FirebaseAuthException catch (e) {
-      return Right(e.code);
-    } catch (e) {
-      return Right(e.toString());
+    if (id == null) {
+      try {
+        credential =
+            await _dbClient.signUpWithEmailAndPassword(email, password);
+      } on FirebaseAuthException catch (e) {
+        return Right(e.code);
+      } catch (e) {
+        return Right(e.toString());
+      }
     }
 
-    // register new user
+    // register or update (if id is passed) new user
     final userData = UserModel(
-      id: credential.user!.uid,
+      id: id ?? credential!.user!.uid,
       name: name,
       password: password,
       email: email,
-      address: address,
-      contactNumber: contactNumber,
-      guardianName: guardianName,
-      roomNo: roomNo,
-      monthlyRent: monthlyRent,
-      startingDate: startingDate,
-      guardianContactNumber: guardianContactNumber,
-      waterRent: waterRent,
+      address: address ?? '',
+      contactNumber: contactNumber ?? 0,
+      guardianName: guardianName ?? '',
+      roomNo: roomNo ?? 0,
+      monthlyRent: monthlyRent ?? 0,
+      startingDate: startingDate ?? DateTime.now(),
+      guardianContactNumber: guardianContactNumber ?? 0,
+      waterRent: waterRent ?? 0,
       isAdmin: isAdmin,
-      documentUrl: documentUrl,
+      documentUrl: documentUrl ?? '',
       photoUrl: photoUrl,
+      notes: notes,
+      startingElectricityUnits: startingElectricityUnits ?? 0,
+      noOfTenants: noOfTenants ?? 0,
     );
 
     final _user = await _dbClient.updateUser(user: userData);

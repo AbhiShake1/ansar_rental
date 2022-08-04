@@ -21,9 +21,13 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       startingDate: DateTime.parse(json['startingDate'] as String),
       duePayment: json['duePayment'] as num?,
       totalPayment: json['totalPayment'] as num?,
+      notes: json['notes'] as String?,
       photoUrl: json['photoUrl'] as String,
       documentUrl: json['documentUrl'] as String,
       isAdmin: json['isAdmin'] as bool? ?? false,
+      hasLeft: json['hasLeft'] as bool? ?? false,
+      startingElectricityUnits: json['startingElectricityUnits'] as int? ?? 0,
+      noOfTenants: json['noOfTenants'] as int? ?? 1,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -42,7 +46,11 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'startingDate': instance.startingDate.toIso8601String(),
       'duePayment': instance.duePayment,
       'totalPayment': instance.totalPayment,
+      'notes': instance.notes,
       'photoUrl': instance.photoUrl,
       'documentUrl': instance.documentUrl,
       'isAdmin': instance.isAdmin,
+      'hasLeft': instance.hasLeft,
+      'startingElectricityUnits': instance.startingElectricityUnits,
+      'noOfTenants': instance.noOfTenants,
     };

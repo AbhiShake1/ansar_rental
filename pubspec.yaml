@@ -20,7 +20,13 @@ dependencies:
   iconsax: 0.0.8
   dartz: 0.10.1
   lottie: 1.4.0
-  flutter_slimy_card: 1.0.2
+  image_picker: 0.8.5+3
+  image_cropper: 2.0.3
+  cached_network_image: 3.2.1
+  firebase_storage: 10.3.4
+  open_file_safe: 3.2.3
+  url_launcher: 6.1.5
+  flutter_cache_manager: 3.3.0
   flutter: 
     sdk: flutter
 
@@ -36,5 +42,6 @@ dev_dependencies:
 flutter: 
   assets: 
     - assets/lottie/
+    - assets/
   uses-material-design: true
 

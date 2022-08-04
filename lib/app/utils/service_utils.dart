@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:ansar_rental/app/widgets/widgets.dart';
+import 'package:ansar_rental/app/views/widgets/loading_widget.dart';
 import 'package:get/get.dart';
 
 Future<void> callService(
