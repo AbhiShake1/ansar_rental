@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-rental management system with flutter
+rental management system with flutter.
 
 A few resources to get you started if this is your first Flutter project:
 
