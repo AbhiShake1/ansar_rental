@@ -1,4 +1,5 @@
 import 'package:ansar_rental/app/controllers/profile_controller.dart';
+import 'package:ansar_rental/app/modules/home/controllers/bill_controller.dart';
 import 'package:ansar_rental/app/modules/home/controllers/home_controller.dart';
 import 'package:ansar_rental/app/modules/home/controllers/user_controller.dart';
 import 'package:ansar_rental/app/modules/home/repo/user_repo.dart';
@@ -11,6 +12,7 @@ class HomeBinding extends Bindings {
   void dependencies() {
     Get
       ..lazyPut(AuthClient.new)
+      ..lazyPut(BillController.new)
       ..lazyPut(UserController.new)
       ..lazyPut(ProfileController.new)
       ..lazyPut(FirestoreClient.new)

@@ -3,6 +3,7 @@ import 'package:ansar_rental/app/data/models/user/user_model.dart';
 import 'package:ansar_rental/app/modules/home/controllers/home_controller.dart';
 import 'package:ansar_rental/app/modules/home/views/bill_view.dart';
 import 'package:ansar_rental/app/modules/home/views/chat_view.dart';
+import 'package:ansar_rental/app/modules/home/views/current_profile_view.dart';
 import 'package:ansar_rental/app/modules/home/views/dashboard_view.dart';
 import 'package:ansar_rental/app/modules/home/views/users_view.dart';
 import 'package:ansar_rental/app/views/views/profile_view.dart';
@@ -15,26 +16,16 @@ import 'package:iconsax/iconsax.dart';
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
+  static const _items = [
+    CurrentProfileView(),
+    UsersView(),
+    BillView(),
+    ChatView(),
+    DashboardView(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final _items = [
-      StreamBuilder<UserModel>(
-        stream: controller.streamCurrentUser,
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const LoadingWidget();
-          }
-          return ProfileView(
-            user: snapshot.data!,
-          );
-        },
-      ),
-      const UsersView(),
-      const BillView(),
-      const ChatView(),
-      const DashboardView(),
-    ];
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,

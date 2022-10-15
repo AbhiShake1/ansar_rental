@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:ansar_rental/app/config/colors.dart';
 import 'package:ansar_rental/app/data/models/user/user_model.dart';
 import 'package:ansar_rental/app/modules/home/controllers/user_controller.dart';
@@ -41,12 +42,14 @@ class UsersView extends GetView<UserController> {
         title: SizedBox(
           height: 50,
           child: TextFormField(
+            controller: controller.searchController,
             textInputAction: TextInputAction.search,
             decoration: const InputDecoration(
+              fillColor: Colors.transparent,
               suffixIcon: Icon(Iconsax.search_normal),
               hintText: 'Search tenant...',
             ),
-          ).px(10),
+          ).glassMorphic(shadowStrength: 100).px(10),
         ),
       ),
       body: StreamBuilder<List<UserModel>>(
@@ -57,34 +60,55 @@ class UsersView extends GetView<UserController> {
             return const LoadingWidget();
           }
           final users = snapshot.data!;
-          return ListView(
-            children: users
-                .map(
-                  (e) => Container(
-                    height: 100,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.secondaryAccent,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: ListTile(
-                      title: e.name.text.bold.white.size(22.sp).make(),
-                      subtitle: 'Room No. ${e.roomNo}'.text.white.make(),
-                      trailing: CircleAvatar(
-                        backgroundImage: CachedNetworkImageProvider(e.photoUrl),
-                      ),
-                    ),
-                  )
-                      .onTap(
-                        () => Get.to(() => ProfileView(user: e)),
-                      )
-                      .p12(),
-                )
-                .toList(),
+
+          return Obx(
+            () {
+              final requiredUsers = users.where(
+                (u) {
+                  if (controller.searchText.isEmpty) {
+                    return true;
+                  }
+
+                  final isNumeric =
+                      int.tryParse(controller.searchText.value) != null;
+
+                  if (isNumeric) {
+                    return u.roomNo == int.parse(controller.searchText.value);
+                  }
+                  return u.name
+                      .toLowerCase()
+                      .contains(controller.searchText.toLowerCase());
+                },
+              );
+
+              return requiredUsers.isEmpty
+                  ? 'No matching user found.'.text.xl2.white.bold.makeCentered()
+                  : ListView(
+                      children: requiredUsers
+                          .map(
+                            (e) => OpenContainer(
+                              openColor: Colors.transparent,
+                              closedColor: Colors.transparent,
+                              middleColor: Colors.transparent,
+                              closedBuilder: (context, action) => ListTile(
+                                title:
+                                    e.name.text.bold.white.size(22.sp).make(),
+                                subtitle:
+                                    'Room No. ${e.roomNo}'.text.white.make(),
+                                trailing: CircleAvatar(
+                                  backgroundImage:
+                                      CachedNetworkImageProvider(e.photoUrl),
+                                ),
+                                dense: true,
+                              ),
+                              openBuilder: (context, action) =>
+                                  ProfileView(user: e),
+                              transitionDuration: 800.milliseconds,
+                            ).pSymmetric(h: 20, v: 20.h).glassMorphic().p12(),
+                          )
+                          .toList(),
+                    );
+            },
           ).py(20);
         },
       ),

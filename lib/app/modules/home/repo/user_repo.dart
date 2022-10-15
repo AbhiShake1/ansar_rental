@@ -1,11 +1,13 @@
 import 'package:ansar_rental/app/data/models/user/user_model.dart';
 import 'package:ansar_rental/app/packages/firestore_client/auth_client.dart';
+import 'package:ansar_rental/app/packages/firestore_client/firestore_client.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class UserRepo extends GetxService {
-  final _dbClient = Get.find<AuthClient>();
+  final _dbClient = Get.find<FirestoreClient>();
+  final _authClient = Get.find<AuthClient>();
 
   Future<Either<UserModel, String>> registerUser({
     required bool toUpdate,
@@ -33,7 +35,7 @@ class UserRepo extends GetxService {
     if (id == null) {
       try {
         credential =
-            await _dbClient.signUpWithEmailAndPassword(email, password);
+            await _authClient.signUpWithEmailAndPassword(email, password);
       } on FirebaseAuthException catch (e) {
         return Right(e.code);
       } catch (e) {

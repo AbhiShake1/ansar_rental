@@ -141,7 +141,6 @@ class ProfileView extends GetView<ProfileController> {
                 .hide(isVisible: !user.isAdmin),
             Flexible(
               child: ListView(
-                shrinkWrap: true,
                 children: [
                   ListTile(
                     leading: Icon(

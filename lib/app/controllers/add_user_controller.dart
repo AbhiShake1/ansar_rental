@@ -17,6 +17,9 @@ class AddUserController extends GetxController
     implements GetxService {
   AddUserController({this.user});
 
+  final _userRepo = Get.find<UserRepo>();
+  final _storageClient = Get.find<FirestoreClient>();
+
   final UserModel? user;
 
   Future<CroppedFile?> cropImage(XFile? image) async {
@@ -53,7 +56,9 @@ class AddUserController extends GetxController
       startingElectricityUnitsController,
       noOfTenantsController,
       notesController,
-      startingDateController;
+      startingYearController,
+      startingMonthController,
+      startingDayController;
 
   late final FocusNode nameNode,
       emailNode,
@@ -66,7 +71,10 @@ class AddUserController extends GetxController
       guardianNameNode,
       guardianContactNumberNode,
       startingElectricityUnitsNode,
-      noOfTenantsNode;
+      noOfTenantsNode,
+      startingYearNode,
+      startingMonthNode,
+      startingDayNode;
 
   late final TabController tabController;
 
@@ -76,9 +84,6 @@ class AddUserController extends GetxController
       documentImagePath = Rx<String?>(null);
 
   final formKey = GlobalKey<FormState>();
-
-  final _userRepo = Get.find<UserRepo>();
-  final _storageClient = Get.find<FirestoreClient>();
 
   @override
   void onInit() {
@@ -101,8 +106,30 @@ class AddUserController extends GetxController
     noOfTenantsController =
         TextEditingController(text: user?.noOfTenants.toString());
     notesController = TextEditingController(text: user?.notes);
-    startingDateController = TextEditingController(
-        text: user?.startingDate.toIso8601String().split('T').first);
+    startingYearController = TextEditingController(
+      text: user?.startingDate.year.toString(),
+    );
+    startingYearController.addListener(() {
+      if (startingYearController.text.length == 4) {
+        startingMonthNode.requestFocus();
+      }
+    });
+    startingMonthController = TextEditingController(
+      text: user?.startingDate.month.toString(),
+    );
+    startingMonthController.addListener(() {
+      if (startingMonthController.text.length == 2) {
+        startingDayNode.requestFocus();
+      }
+    });
+    startingDayController = TextEditingController(
+      text: user?.startingDate.day.toString(),
+    );
+    startingDayController.addListener(() {
+      if (startingDayController.text.length == 2) {
+        Get.focusScope?.unfocus();
+      }
+    });
     nameNode = FocusNode();
     emailNode = FocusNode();
     passwordNode = FocusNode();
@@ -112,6 +139,9 @@ class AddUserController extends GetxController
     waterRentNode = FocusNode();
     roomNoNode = FocusNode();
     guardianNameNode = FocusNode();
+    startingYearNode = FocusNode();
+    startingMonthNode = FocusNode();
+    startingDayNode = FocusNode();
     guardianContactNumberNode = FocusNode();
     startingElectricityUnitsNode = FocusNode();
     noOfTenantsNode = FocusNode();
@@ -139,38 +169,6 @@ class AddUserController extends GetxController
     super.onReady();
   }
 
-  @override
-  void onClose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    addressController.dispose();
-    contactNumberController.dispose();
-    monthlyRentController.dispose();
-    waterRentController.dispose();
-    roomNoController.dispose();
-    guardianNameController.dispose();
-    guardianContactNumberController.dispose();
-    startingElectricityUnitsController.dispose();
-    noOfTenantsController.dispose();
-    notesController.dispose();
-    startingDateController.dispose();
-    nameNode.dispose();
-    emailNode.dispose();
-    passwordNode.dispose();
-    addressNode.dispose();
-    contactNumberNode.dispose();
-    monthlyRentNode.dispose();
-    waterRentNode.dispose();
-    roomNoNode.dispose();
-    guardianNameNode.dispose();
-    guardianContactNumberNode.dispose();
-    startingElectricityUnitsNode.dispose();
-    noOfTenantsNode.dispose();
-    tabController.dispose();
-    super.onClose();
-  }
-
   void _clearAll() {
     nameController.clear();
     emailController.clear();
@@ -185,7 +183,9 @@ class AddUserController extends GetxController
     startingElectricityUnitsController.clear();
     noOfTenantsController.clear();
     notesController.clear();
-    startingDateController.clear();
+    startingYearController.clear();
+    startingMonthController.clear();
+    startingDayController.clear();
     profileImagePath.value = null;
     documentImagePath.value = null;
   }
@@ -292,7 +292,11 @@ class AddUserController extends GetxController
         final profileUrl = await _uploadImage(profileImagePath.value!),
             documentUrl = await _uploadImage(documentImagePath.value!);
 
-        final startingDate = DateTime.tryParse(startingDateController.text);
+        final year = startingYearController.text,
+            month = startingMonthController.text,
+            day = startingDayController.text;
+
+        final startingDate = DateTime.tryParse('$year$month$day');
 
         if (startingDate == null) {
           throw 'Invalid date format';

@@ -1,17 +1,21 @@
 import 'package:ansar_rental/app/data/models/user/user_model.dart';
-import 'package:ansar_rental/app/packages/firestore_client/auth_client.dart';
-import 'package:ansar_rental/app/utils/service_utils.dart';
+import 'package:ansar_rental/app/packages/firestore_client/firestore_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController implements GetxService {
-  final _dbClient = Get.find<AuthClient>();
+  final _dbClient = Get.find<FirestoreClient>();
 
-  late final TextEditingController _searchController;
+  late final TextEditingController searchController;
+
+  final searchText = ''.obs;
 
   @override
   void onInit() {
-    _searchController = TextEditingController();
+    searchController = TextEditingController();
+    searchController.addListener(() {
+      searchText.value = searchController.text;
+    });
     super.onInit();
   }
 
@@ -22,7 +26,7 @@ class UserController extends GetxController implements GetxService {
 
   @override
   void onClose() {
-    _searchController.dispose();
+    searchController.dispose();
     super.onClose();
   }
 

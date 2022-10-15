@@ -19,6 +19,9 @@ class AppTheme {
         colorScheme: Get.theme.colorScheme.copyWith(
           primary: AppColors.primaryAccent,
         ),
+        expansionTileTheme: const ExpansionTileThemeData(
+          collapsedIconColor: Colors.white,
+        ),
         splashFactory: NoSplash.splashFactory,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,

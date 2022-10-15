@@ -47,7 +47,6 @@ class ProfileSettingController extends GetxController {
 
   Future<void> signOut() => callService(
         _dbClient.logout,
-        onSuccess: () => Get.offAllNamed<dynamic>(Routes.LOGIN),
         onFailure: (error) => Get.snackbar(
           'Something went wrong',
           error.toString(),

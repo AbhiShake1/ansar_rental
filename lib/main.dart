@@ -3,6 +3,7 @@ import 'package:ansar_rental/app/config/constants.dart';
 import 'package:ansar_rental/app/config/theme.dart';
 import 'package:ansar_rental/app/routes/app_pages.dart';
 import 'package:ansar_rental/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +23,7 @@ void main() async {
   );
 
   await GetStorage.init(AppConst.cacheUser);
+  await GetStorage.init('BIOMETRIC_AUTH');
 
   //ignore errors
   // FlutterError.onError = (_) {};
@@ -36,6 +38,11 @@ void main() async {
       splitScreenMode: true,
       designSize: const Size(375, 812),
       builder: (context, child) => GetMaterialApp(
+        onInit: () => FirebaseAuth.instance.authStateChanges().listen(
+              (user) => Get.offAllNamed<dynamic>(
+                user == null ? Routes.LOGIN : Routes.HOME,
+              ),
+            ),
         initialBinding: InitialBinding(),
         title: 'Ansar Rental',
         initialRoute: AppPages.INITIAL,

@@ -229,7 +229,8 @@ class AddUserWidget extends GetWidget {
         () => TextFormField(
               textInputAction: TextInputAction.done,
               keyboardType: TextInputType.number,
-              onFieldSubmitted: (_) => Get.focusScope!.unfocus(),
+              onFieldSubmitted: (_) =>
+                  addUserController.startingYearNode.requestFocus(),
               focusNode: addUserController.noOfTenantsNode,
               controller: addUserController.noOfTenantsController,
               validator: addUserController.lessThan10Validator,
@@ -243,11 +244,44 @@ class AddUserWidget extends GetWidget {
         () => 10.h.heightBox,
         () => 'Starting Date'.text.bold.size(16.sp).make(),
         () => 2.h.heightBox,
-        () => TextFormField(
-              controller: addUserController.startingDateController,
-              decoration: const InputDecoration(
-                hintText: 'yyyy-mm-dd',
-              ),
+        () => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextFormField(
+                  controller: addUserController.startingYearController,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  decoration: const InputDecoration(
+                    hintText: 'yyyy',
+                  ),
+                  onFieldSubmitted: (_) =>
+                      addUserController.startingMonthNode.requestFocus(),
+                ).w(100.w),
+                TextFormField(
+                  focusNode: addUserController.startingMonthNode,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  controller: addUserController.startingMonthController,
+                  decoration: const InputDecoration(
+                    hintText: 'mm',
+                  ),
+                  onFieldSubmitted: (_) =>
+                      addUserController.startingDayNode.requestFocus(),
+                ).w(100.w),
+                TextFormField(
+                  focusNode: addUserController.startingDayNode,
+                  controller: addUserController.startingDayController,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  decoration: const InputDecoration(
+                    hintText: 'dd',
+                  ),
+                  onFieldSubmitted: (_) => Get.focusScope?.unfocus(),
+                ).w(100.w),
+              ],
             ),
         () => 10.h.heightBox,
         () => 'Notes'.text.bold.size(16.sp).make(),
